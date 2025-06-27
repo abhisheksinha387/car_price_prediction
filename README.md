@@ -1,32 +1,40 @@
-```markdown
-# 🚗 Car Price Prediction
-
-🎥 **[YouTube Video Tutorial](#)** | 🌐 **[Live Demo](#)**
-
-## 📌 Overview
-
-The **Car Price Prediction** project is a machine learning-based web application designed to estimate the price of used cars based on features like **car name, company, fuel type, year of manufacture**, and **kilometers driven**.
-
-It uses a **Gradient Boosting Regressor** with Optuna hyperparameter tuning, integrated into a **Flask** web app for easy user interaction.
+Here’s a properly formatted version of your project description in **GitHub README.md** Markdown syntax:
 
 ---
 
-## 🗂 Project Structure
+# 🚗 Car Price Prediction
+
+**🎥 [YouTube Video Tutorial](#)** • **💻 [Live Demo](#)**
+
+## 🧠 Overview
+
+The Car Price Prediction project is a **machine learning-based web application** designed to predict the price of used cars based on features such as:
+
+* Car name
+* Company
+* Fuel type
+* Year of manufacture
+* Kilometers driven
+
+The model is built using a **Gradient Boosting Regressor**, includes data preprocessing and feature engineering, and is deployed via a **Flask web application** for user interaction.
+
+---
+
+## 📁 Project Structure
 
 ```
-
-car\_price\_prediction/
+car_price_prediction/
 ├── notebooks/
-│   ├── quikr\_car.csv
-│   └── car\_price\_prediction.ipynb
+│   ├── quikr_car.csv
+│   └── car_price_prediction.ipynb
 ├── src/
 │   ├── components/
-│   │   ├── data\_ingestion.py
-│   │   ├── data\_transformation.py
-│   │   └── model\_training.py
+│   │   ├── data_ingestion.py
+│   │   ├── data_transformation.py
+│   │   └── model_training.py
 │   ├── pipeline/
-│   │   ├── predict\_pipeline.py
-│   │   └── train\_pipeline.py
+│   │   ├── predict_pipeline.py
+│   │   └── train_pipeline.py
 │   ├── exception.py
 │   ├── logger.py
 │   └── utils.py
@@ -37,60 +45,65 @@ car\_price\_prediction/
 ├── requirements.txt
 ├── setup.py
 └── README.md
-
-````
+```
 
 ---
 
 ## 🚀 Features
 
-- **Data Ingestion**: Cleans the dataset (`quikr_car.csv`), handles missing values and outliers.
-- **Feature Engineering**: Computes car age, kilometers per year, and premium brand status.
-- **Model Training**: Trains a **Gradient Boosting Regressor** with **Optuna** tuning.
-- **Prediction Pipeline**: Uses the trained model for real-time predictions.
-- **Web Interface**: A user-friendly **Flask** app with dropdowns and input fields.
-- **Logging & Exception Handling**: Custom logs and robust error tracking.
+* **Data Ingestion**: Cleans raw dataset, handles missing values, outliers, and converts data types.
+* **Data Transformation**: Feature engineering and preprocessing (OneHotEncoder, StandardScaler).
+* **Model Training**: Gradient Boosting Regressor with Optuna hyperparameter tuning.
+* **Prediction Pipeline**: Flask interface for live predictions.
+* **Web Interface**: Dropdowns and input fields for easy data entry.
+* **Logging & Exception Handling**: Built-in for robustness.
 
 ---
 
-## 🧰 Requirements
+## 📦 Requirements
 
-Dependencies are listed in `requirements.txt`. Key libraries:
+Main libraries:
 
-- `pandas`
-- `numpy`
-- `scikit-learn`
-- `optuna`
-- `xgboost`
-- `lightgbm`
-- `catboost`
-- `flask`
+* `pandas`
+* `numpy`
+* `scikit-learn`
+* `optuna`
+* `xgboost`
+* `lightgbm`
+* `catboost`
+* `flask`
 
----
-
-## ⚙️ Installation
-
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/abhisheksinha387/car_price_prediction.git
-cd car_price_prediction
-````
-
-### 2. (Optional) Create Virtual Environment
-
-```bash
-python -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-```
-
-### 3. Install Dependencies
+Install using:
 
 ```bash
 pip install -r requirements.txt
 ```
 
-### 4. (Optional) Install as Package
+---
+
+## 🛠️ Installation
+
+1. **Clone the Repository**:
+
+```bash
+git clone https://github.com/abhisheksinha387/car_price_prediction.git
+cd car_price_prediction
+```
+
+2. **Set Up Virtual Environment** *(optional)*:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```
+
+3. **Install Dependencies**:
+
+```bash
+pip install -r requirements.txt
+```
+
+4. **Install Project (Optional)**:
 
 ```bash
 python setup.py install
@@ -98,11 +111,11 @@ python setup.py install
 
 ---
 
-## 📈 Usage
+## 🏋️‍♂️ Model Training
 
-### 🔧 Train the Model
+Ensure `quikr_car.csv` is inside `notebooks/`.
 
-Ensure `quikr_car.csv` is in the `notebooks/` folder.
+Run:
 
 ```bash
 python src/pipeline/train_pipeline.py
@@ -110,26 +123,27 @@ python src/pipeline/train_pipeline.py
 
 This will:
 
-* Load and clean data
-* Engineer features and preprocess
-* Train and tune the model
-* Save model and preprocessor to `artifacts/`
+* Clean and transform the data
+* Train the model with hyperparameter tuning
+* Save `model.pkl` and `preprocessor.pkl` in `artifacts/`
 
 ---
 
-### 🌐 Run the Web App
+## 🌐 Running the Web App
+
+Start the Flask app:
 
 ```bash
 python app.py
 ```
 
-Then open [http://127.0.0.1:5000/](http://127.0.0.1:5000/) in your browser.
+Then open [http://127.0.0.1:5000](http://127.0.0.1:5000) in your browser.
 
-Input car details and get an estimated price instantly.
+Enter car details and get predicted price.
 
 ---
 
-### 🤖 Predict Programmatically
+## 🧪 Predict Programmatically
 
 ```python
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
@@ -141,7 +155,6 @@ custom_data = CustomData(
     year=2019,
     kms_driven=100
 )
-
 input_df = custom_data.get_data_as_dataframe()
 predict_pipeline = PredictPipeline()
 prediction = predict_pipeline.predict(input_df)
@@ -151,67 +164,67 @@ print(f"Predicted Price: ₹{prediction:.2f}")
 
 ---
 
-## 📊 Dataset Details
+## 📊 Dataset
 
-The `quikr_car.csv` dataset includes:
+**File:** `notebooks/quikr_car.csv`
 
-* `name`: Car model
+**Columns:**
+
+* `name`: Car model name
 * `company`: Manufacturer
-* `year`: Manufacturing year
-* `Price`: Car price (target)
+* `year`: Year of manufacture
+* `Price`: Target (in INR)
 * `kms_driven`: Kilometers driven
-* `fuel_type`: Petrol, Diesel, etc.
+* `fuel_type`: Fuel type
 
-
----
-
-## 📦 Artifacts
-
-Saved in the `artifacts/` directory:
-
-* `cleaned_data.csv`: Processed dataset
-* `preprocessor.pkl`: ColumnTransformer with OneHotEncoder + StandardScaler
-* `model.pkl`: Trained Gradient Boosting model
+Preprocessing during ingestion handles missing values, outliers, and type issues.
 
 ---
 
-## 📉 Model Performance
+## 📂 Artifacts
 
-Evaluation metrics:
+Generated in `artifacts/`:
 
-| Metric          | Value (approx) |
-| --------------- | -------------- |
-| R² Score (Test) | 0.85           |
-| MAE             | ₹50,000        |
-| RMSE            | ₹80,000        |
-| CV R² Mean      | 0.83           |
+* `cleaned_data.csv`: Cleaned data
+* `preprocessor.pkl`: Preprocessing pipeline
+* `model.pkl`: Trained ML model
+
+---
+
+## 📈 Model Performance
+
+Metrics (approx):
+
+| Metric     | Value     |
+| ---------- | --------- |
+| R² Score   | \~0.85    |
+| MAE        | \~₹50,000 |
+| RMSE       | \~₹80,000 |
+| CV R² Mean | \~0.83    |
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! 🚀
-
-1. Fork the repo
-2. Create a feature branch: `git checkout -b feature-name`
+1. Fork the repository
+2. Create your branch: `git checkout -b feature-branch`
 3. Commit your changes: `git commit -m 'Add feature'`
-4. Push: `git push origin feature-name`
+4. Push to branch: `git push origin feature-branch`
 5. Open a pull request
 
 ---
 
 ## 📄 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for more details.
+This project is licensed under the [MIT License](LICENSE).
 
 ---
 
 ## 📬 Contact
 
-* **Author**: Abhishek Sinha
-* **Email**: [abhisheksinha.7742@gmail.com](mailto:abhisheksinha.7742@gmail.com)
-* **GitHub**: [@abhisheksinha387](https://github.com/abhisheksinha387)
+**Author**: Abhishek Sinha
+📧 Email: [abhisheksinha.7742@gmail.com](mailto:abhisheksinha.7742@gmail.com)
+🐙 GitHub: [@abhisheksinha387](https://github.com/abhisheksinha387)
 
 ---
-
 
