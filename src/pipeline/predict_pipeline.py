@@ -1,4 +1,3 @@
-# car_price_prediction/src/pipeline/predict_pipeline.py
 import pandas as pd
 import pickle
 import os

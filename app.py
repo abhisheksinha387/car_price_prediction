@@ -1,4 +1,3 @@
-# car_price_prediction/app.py
 from flask import Flask, render_template, request
 from src.pipeline.predict_pipeline import CustomData, PredictPipeline
 from src.logger import logging

@@ -1,4 +1,3 @@
-# car_price_prediction/src/utils.py
 import pickle
 import os
 from src.logger import logging

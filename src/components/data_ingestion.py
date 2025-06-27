@@ -1,4 +1,3 @@
-# car_price_prediction/src/components/data_ingestion.py
 import pandas as pd
 import os
 from src.logger import logging

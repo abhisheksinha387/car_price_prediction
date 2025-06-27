@@ -1,18 +1,195 @@
-<!-- car_price_prediction/templates/result.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Prediction Result</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            font-size: 3rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .result-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            text-align: center;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        .result-text {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .price-display {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            margin: 1rem 0;
+            animation: pulse 2s infinite;
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .back-link {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+        }
+
+        .back-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .back-link:active {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .result-container {
+                padding: 2rem;
+            }
+            
+            .price-display {
+                font-size: 2rem;
+            }
+            
+            .result-text {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .result-container {
+                padding: 1.5rem;
+            }
+            
+            .price-display {
+                font-size: 1.8rem;
+            }
+            
+            .result-text {
+                font-size: 1.2rem;
+            }
+            
+            .icon {
+                font-size: 3rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Prediction Result</h1>
-    {% if prediction is number %}
-        <p>Predicted Car Price: ₹{{ prediction }}</p>
-    {% else %}
-        <p>{{ prediction }}</p>
-    {% endif %}
-    <a href="/">Back to Home</a>
+    <div class="result-container">
+        <div class="icon">🚗</div>
+        {% if prediction is number %}
+            <div class="result-text">Predicted Car Price:</div>
+            <div class="price-display">₹{{ "{:,.2f}".format(prediction) }}</div>
+        {% else %}
+            <div class="error-message">{{ prediction }}</div>
+        {% endif %}
+        <a href="/" class="back-link">Back to Home</a>
+    </div>
 </body>
 </html>
