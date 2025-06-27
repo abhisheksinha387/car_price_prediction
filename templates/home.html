@@ -1,0 +1,42 @@
+<!-- car_price_prediction/templates/home.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Price Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <h1>Car Price Prediction</h1>
+    <form action="/predict" method="POST">
+        <label>Car Name:</label><br>
+        <select name="name" required>
+            {% for name in names %}
+                <option value="{{ name }}">{{ name }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Company:</label><br>
+        <select name="company" required>
+            {% for company in companies %}
+                <option value="{{ company }}">{{ company }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Fuel Type:</label><br>
+        <select name="fuel_type" required>
+            {% for fuel_type in fuel_types %}
+                <option value="{{ fuel_type }}">{{ fuel_type }}</option>
+            {% endfor %}
+        </select><br>
+
+        <label>Year:</label><br>
+        <input type="number" name="year" min="1900" max="2025" required><br>
+
+        <label>Kilometers Driven:</label><br>
+        <input type="number" name="kms_driven" min="0" step="0.01" required><br>
+
+        <input type="submit" value="Predict Price">
+    </form>
+</body>
+</html>
