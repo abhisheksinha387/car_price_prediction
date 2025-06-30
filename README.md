@@ -4,7 +4,8 @@ Here’s a properly formatted version of your project description in **GitHub RE
 
 # 🚗 Car Price Prediction
 
-**🎥 [YouTube Video Tutorial](#)** • **💻 [Live Demo](#)**
+**🎥 [YouTube Video Tutorial](#)** : https://youtu.be/5wt5dyfpPpk?si=jfW-uYD1LXzHqGdh
+• **💻 [Live Demo](#)(Live demo is in gradio)** : https://huggingface.co/spaces/abhisheksinha7742/car_price_prediction
 
 ## 🧠 Overview
 
